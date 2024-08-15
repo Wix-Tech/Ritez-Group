@@ -121,7 +121,7 @@ nav svg{
     animation: slideDown 2s ease-in-out;
 }
 .ritezgroup img{
-    padding-top: 15px;
+    background: rgb(255,255,255)
     border-radius: 5px;
 }
 .btn{
