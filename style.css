@@ -120,8 +120,11 @@ nav svg{
 .ritezgroup{
     animation: slideDown 2s ease-in-out;
 }
-.ritezgroup h1{
-    color: var(--accent-color);
+.ritezgroup img{
+    height: 70px;
+    width: 150px;
+    background: #fff;
+    border-radius: 5px;
 }
 .btn{
     animation: slideUp 2s ease-in-out;
