@@ -1,0 +1,813 @@
+/* --- Root Variables & Base Styles --- */
+:root {
+    --black: #121212; /* A slightly softer, but still deep black */
+    --blue: #006aff; /* A vibrant blue */
+    --dark-blue: #004acb; /* A darker blue for hover effects */
+    --white-bg: #f8f8f8; /* A clean off-white for backgrounds */
+    --medium-grey-nav: #222222; /* Darker grey for navigation for contrast */
+    --white-text: #ffffff;
+    --dark-text: #333333; /* Dark text for white backgrounds */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 12pt;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background-color: var(--black); /* Default background */
+    color: var(--white-text); /* Default text color for dark sections */
+    overflow-x: hidden; /* Prevent horizontal scroll from AOS animations */
+}
+
+/* --- Utility Classes for Backgrounds --- */
+.black-bg {
+    background-color: var(--black);
+    color: var(--white-text);
+}
+
+.blue-bg {
+    background-color: var(--blue);
+    color: var(--white-text);
+}
+
+.white-bg {
+    background-color: var(--white-bg);
+    color: var(--dark-text); /* Dark text on white background */
+}
+
+/* --- Navigation --- */
+nav {
+    height: 60px;
+    background-color: var(--medium-grey-nav);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 11;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.links-container {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+}
+
+nav a {
+    height: 100%;
+    padding: 0 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--white-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+    background: var(--blue);
+    color: var(--white-text);
+}
+
+.home-link {
+    margin-right: auto;
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
+    color: var(--blue);
+    font-weight: 700;
+}
+
+.home-link:hover {
+    background: none;
+    color: var(--dark-blue);
+}
+
+nav svg {
+    fill: var(--white-text);
+}
+
+#sidebar-active {
+    display: none;
+}
+
+.open-sidebar-btn, .close-sidebar-btn {
+    display: none;
+    cursor: pointer;
+}
+
+/* --- Hero Section --- */
+.hero {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, var(--black) 0%, var(--blue) 100%);
+    color: var(--white-text);
+    padding-top: 60px;
+    overflow: hidden;
+    text-align: center; /* Center text by default */
+}
+
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 70px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* Allow content to wrap */
+}
+
+.hero-about {
+    flex: 1; /* Take remaining space */
+    min-width: 300px; /* Ensure it doesn't get too small */
+    padding-right: 30px;
+    text-align: left; /* Align text left on larger screens */
+}
+
+.ritezgroup h1 {
+    color: var(--white-text);
+    font-size: 3.8rem; /* Slightly larger heading */
+    margin-bottom: 0.8rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
+}
+
+.ritezgroup p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 600px; /* Constrain width for readability */
+}
+
+.btn-wrapper {
+    margin-top: 2rem;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--white-text);
+    background: var(--blue);
+    letter-spacing: 1px;
+    border: none;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background: var(--dark-blue);
+    transform: translateY(-3px);
+}
+
+.hero-container .imglogo {
+    flex-shrink: 0; /* Prevent image from shrinking */
+    margin-left: 30px; /* Space from text */
+}
+.hero-container .imglogo img {
+    height: 300px; /* Larger image in hero */
+    width: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* --- General Section Styling --- */
+.section {
+    padding: 100px 20px; /* More generous padding */
+    min-height: 50vh; /* Ensure minimum height */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+.section-content {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center; /* Center section titles and general content */
+}
+
+.section-content h2 {
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+    color: inherit; /* Inherit color from parent section */
+}
+
+.section-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+/* --- About Section Specifics --- */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.about-card {
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: left; /* Align text left within cards */
+    background-color: rgba(0, 0, 0, 0.2); /* Slightly transparent for blue background */
+    transition: transform 0.3s ease;
+}
+.blue-bg .about-card { /* Specific for cards on blue background */
+    background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent white on blue */
+    color: var(--white-text);
+}
+.about-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: inherit;
+}
+.about-card:hover {
+    transform: translateY(-5px);
+}
+
+
+/* --- Subsidiaries Section Specifics --- */
+.subsidiary-card {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.05); /* Very subtle background on black */
+    transition: transform 0.3s ease;
+}
+.subsidiary-card:hover {
+    transform: translateY(-5px);
+}
+
+.subsidiary-card.white-bg { /* For cards with white background */
+    background-color: var(--white-bg);
+    color: var(--dark-text);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.subsidiary-card img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.subsidiary-card .card-text h3 {
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+    color: inherit;
+}
+.subsidiary-card .card-text p {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+/* --- Philosophy Section Specifics --- */
+.philosophy-item {
+    background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent black on blue background */
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: left;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+.blue-bg .philosophy-item { /* Adjust for blue background */
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white on blue */
+}
+.philosophy-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: inherit;
+}
+.philosophy-item p {
+    font-size: 1rem;
+    margin-bottom: 0; /* Remove bottom margin for paragraphs within items */
+}
+
+.salary-info {
+    margin-top: 40px;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    text-align: left;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+.blue-bg .salary-info {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.salary-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: var(--white-text);
+}
+.salary-info p {
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+}
+
+
+/* --- Branding Section Specifics --- */
+.branding-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.branding-content h2 {
+    margin-bottom: 50px;
+}
+.logo-definition {
+    max-width: 700px;
+    width: 100%;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.logo-definition img {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+.logo-definition p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+.color-meaning h3 {
+    font-size: 1.6rem;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    color: var(--blue);
+}
+.color-meaning p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+
+/* --- Contact Section / Footer --- */
+.contact {
+    min-height: 40vh; /* Reduced height as footer takes care of spacing */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: var(--black);
+    padding: 0; /* Remove section padding, footer has its own */
+}
+
+.footer {
+    background: var(--black);
+    padding: 60px 20px 40px; /* More padding top/bottom */
+    color: var(--white-text);
+}
+
+.contact-footer {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 20px 0;
+    text-align: left;
+}
+
+.contact-info h3 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+    color: var(--blue);
+}
+
+.contact-info .info {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+    color: var(--white-text);
+}
+
+.contact-info a {
+    text-decoration: none;
+    color: var(--blue);
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: var(--dark-blue);
+}
+
+.social-icons {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.social-icons svg path {
+    fill: var(--white-text);
+}
+.social-icons svg rect {
+    fill: transparent;
+}
+.social-icons a {
+    transition: transform 0.2s ease;
+}
+.social-icons a:hover {
+    transform: translateY(-5px);
+}
+
+hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 40px auto; /* More vertical space */
+    width: 80%;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 10px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* --- Responsive Adjustments --- */
+
+/* For screens smaller than 992px (typical large tablets/small laptops) */
+@media(max-width: 992px) {
+    .hero-container {
+        padding: 0 40px;
+    }
+    .ritezgroup h1 {
+        font-size: 3rem;
+    }
+    .ritezgroup p {
+        font-size: 1.1rem;
+    }
+    .hero-container .imglogo img {
+        height: 250px;
+        width: 250px;
+    }
+
+    .section-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+    }
+
+    .subsidiary-card {
+        flex-direction: column; /* Stack image and text vertically */
+        text-align: center;
+        gap: 20px;
+    }
+    .subsidiary-card img {
+        margin-bottom: 15px; /* Add space below image */
+    }
+    .subsidiary-card .card-text {
+        text-align: center; /* Center text within cards on mobile */
+    }
+    .subsidiary-card .card-text h3 {
+        font-size: 1.5rem;
+    }
+    .subsidiary-card .card-text p {
+        font-size: 0.95rem;
+    }
+
+    .philosophy-item h3 {
+        font-size: 1.3rem;
+    }
+    .philosophy-item p {
+        font-size: 0.95rem;
+    }
+}
+
+/* For screens smaller than 768px (e.g., tablets and large phones) */
+@media(max-width: 768px) {
+    /* Navigation */
+    nav {
+        justify-content: space-between;
+        padding: 0 10px;
+    }
+
+    .home-link {
+        margin-right: 0;
+        padding-left: 10px;
+        font-size: 1.5rem;
+    }
+
+    .links-container {
+        flex-direction: column;
+        align-items: flex-start;
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 250px;
+        height: 100vh;
+        transition: right 0.4s ease-out;
+        background-color: var(--medium-grey-nav);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.7);
+        padding-top: 60px;
+    }
+
+    nav a {
+        width: 100%;
+        padding: 15px 20px;
+        font-size: 1.1rem;
+        justify-content: flex-start;
+    }
+
+    .open-sidebar-btn, .close-sidebar-btn {
+        display: block;
+        padding: 15px;
+        z-index: 12;
+    }
+    .close-sidebar-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    #sidebar-active:checked ~ .links-container {
+        right: 0;
+    }
+
+    #sidebar-active:checked ~ #overlay {
+        background-color: rgba(0, 0, 0, 0.6);
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9;
+    }
+
+    /* Hero section */
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px;
+    }
+
+    .hero-about {
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .hero-about .ritezgroup {
+        text-align: center; /* Center text for hero on small screens */
+    }
+
+    .hero-container .imglogo {
+        order: -1;
+        margin-bottom: 30px;
+        margin-left: 0; /* Remove left margin */
+    }
+
+    .hero-container .imglogo img {
+        height: 180px;
+        width: 180px;
+    }
+
+    .ritezgroup h1 {
+        font-size: 2.5rem;
+    }
+
+    .ritezgroup p {
+        font-size: 1rem;
+    }
+
+    .btn-wrapper {
+        text-align: center; /* Center button wrapper */
+    }
+
+    /* General Section Styling */
+    .section {
+        padding: 60px 15px; /* Reduce general section padding */
+    }
+    .section-content h2 {
+        font-size: 2rem;
+        margin-bottom: 25px;
+    }
+    .section-content p {
+        font-size: 1rem;
+    }
+
+    /* About section */
+    .about-card {
+        padding: 20px;
+        text-align: center; /* Center text within cards */
+    }
+    .about-card h3 {
+        font-size: 1.2rem;
+    }
+
+    /* Subsidiaries section */
+    .subsidiary-card {
+        padding: 20px;
+        gap: 15px;
+    }
+    .subsidiary-card img {
+        height: 80px;
+        width: 80px;
+    }
+    .subsidiary-card .card-text h3 {
+        font-size: 1.3rem;
+    }
+    .subsidiary-card .card-text p {
+        font-size: 0.9rem;
+    }
+
+    /* Philosophy section */
+    .philosophy-item {
+        padding: 20px;
+        text-align: center;
+    }
+    .philosophy-item h3 {
+        font-size: 1.2rem;
+    }
+    .philosophy-item p {
+        font-size: 0.9rem;
+    }
+    .salary-info {
+        padding: 20px;
+        text-align: center;
+    }
+    .salary-info h3 {
+        font-size: 1.5rem;
+    }
+
+    /* Branding section */
+    .logo-definition {
+        padding: 20px;
+    }
+    .logo-definition img {
+        height: 100px;
+        width: 100px;
+    }
+    .logo-definition p {
+        font-size: 1rem;
+    }
+    .color-meaning h3 {
+        font-size: 1.3rem;
+    }
+    .color-meaning p {
+        font-size: 0.9rem;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 40px 15px;
+    }
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .contact-info .info {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .contact-info h3 {
+        font-size: 1.8rem;
+    }
+    .social-icons {
+        margin-top: 0;
+        padding: 0;
+    }
+    .copyright {
+        font-size: 0.8rem;
+    }
+}
+
+/* For screens smaller than 480px (e.g., small phones) */
+@media (max-width: 480px) {
+    .hero-container {
+        padding: 30px 15px;
+    }
+    .ritezgroup h1 {
+        font-size: 2rem;
+    }
+    .ritezgroup p {
+        font-size: 0.9rem;
+    }
+    .hero-container .imglogo img {
+        height: 150px;
+        width: 150px;
+    }
+    .button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .section-content h2 {
+        font-size: 1.8rem;
+    }
+    .section-content p {
+        font-size: 0.9rem;
+    }
+
+    .about-card {
+        padding: 15px;
+    }
+    .about-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .subsidiary-card {
+        padding: 15px;
+    }
+    .subsidiary-card img {
+        height: 70px;
+        width: 70px;
+    }
+    .subsidiary-card .card-text h3 {
+        font-size: 1.1rem;
+    }
+    .subsidiary-card .card-text p {
+        font-size: 0.85rem;
+    }
+
+    .philosophy-item {
+        padding: 15px;
+    }
+    .philosophy-item h3 {
+        font-size: 1.1rem;
+    }
+    .philosophy-item p {
+        font-size: 0.85rem;
+    }
+
+    .salary-info {
+        padding: 15px;
+    }
+    .salary-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .logo-definition img {
+        height: 80px;
+        width: 80px;
+    }
+    .color-meaning h3 {
+        font-size: 1.1rem;
+    }
+    .color-meaning p {
+        font-size: 0.85rem;
+    }
+
+    .footer {
+        padding: 30px 10px;
+    }
+    .contact-info h3 {
+        font-size: 1.5rem;
+    }
+    .social-icons {
+        gap: 15px;
+    }
+}
+
